@@ -24,12 +24,12 @@ public class BlockMiner extends Thread{
 
     @Override
     public void run() {
-        long  nounce;
+        long  nonce;
         while(!this.gb.isMinerado(this.md) && !this.gb.isInterrupted()) {
-            nounce=ThreadLocalRandom.current().nextLong();
-            this.gb.pub(nounce);
-            if(this.gb.testNounce(this.md, nounce)) {
-                this.gb.setNounce(this.md, nounce);
+            nonce=ThreadLocalRandom.current().nextLong();
+            this.gb.pub(nonce);
+            if(this.gb.testNounce(this.md, nonce)) {
+                this.gb.setNounce(this.md, nonce);
             }
         }
     }    

@@ -65,8 +65,7 @@ public class BlockGenerator extends SwingWorker<Block, Long>{
     
     private byte[] getBytes() {
         return
-                Utils.GenericUtils.concatenarArray(
-                    Utils.GenericUtils.concatenarArray(this.dados.toBytes(), this.assinatura),
+                Utils.GenericUtils.concatenateArray(Utils.GenericUtils.concatenateArray(this.dados.toBytes(), this.assinatura),
                         Base64.getDecoder().decode(this.hashAntigo)
                 );
     }

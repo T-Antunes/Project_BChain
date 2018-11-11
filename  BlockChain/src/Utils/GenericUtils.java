@@ -32,7 +32,7 @@ public class GenericUtils {
     }
     
     
-    public static byte[] concatenarArray(byte[] a,byte[] b) {
+    public static byte[] concatenateArray(byte[] a,byte[] b) {
         byte[] c = new byte[a.length+b.length];
         System.arraycopy(a, 0, c, 0, a.length);
         System.arraycopy(b, 0, c, a.length, b.length);      
@@ -41,17 +41,17 @@ public class GenericUtils {
     
     
     // segurança
-    public static byte[] assinar(byte[]dados, PrivateKey chave) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
+    public static byte[] sign(byte[]dados, PrivateKey chave) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
         Signature sign = Signature.getInstance("SHA256withRSA");
         sign.initSign(chave);
         sign.update(dados);
         return sign.sign();
     }
     
-    public static boolean verificarAssinatura(byte[]dados,byte[] assinatura, PublicKey chave) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
+    public static boolean verifiySignature(byte[]dados,byte[] signature, PublicKey key) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
         Signature sign = Signature.getInstance("SHA256withRSA");
-        sign.initVerify(chave);
+        sign.initVerify(key);
         sign.update(dados);
-        return sign.verify(assinatura);
+        return sign.verify(signature);
     }
 }

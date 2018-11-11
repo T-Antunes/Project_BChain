@@ -49,8 +49,7 @@ public class Block implements Serializable{
     }
 
     private byte[] getBytes() {
-        return Utils.GenericUtils.concatenarArray(
-                Utils.GenericUtils.concatenarArray(this.dados.toBytes(), this.assinatura),
+        return Utils.GenericUtils.concatenateArray(Utils.GenericUtils.concatenateArray(this.dados.toBytes(), this.assinatura),
                 Base64.getDecoder().decode(this.hashAntigo)
         );
     }
