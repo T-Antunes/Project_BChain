@@ -15,7 +15,7 @@ import java.util.Base64;
  */
 public class Block implements Serializable{
 
-    public final static String PRIMEIRO_HASH = "00";
+    public final static String FIRST_HASH = "00";
     public final static String ALGORITMO_HASH = "SHA-256";
     private final Service dados;
     private final byte[] assinatura;
