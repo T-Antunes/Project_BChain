@@ -30,22 +30,20 @@ public class GenericUtils {
         buffer.flip();//need flip 
         return buffer.getLong();
     }
-    
-    
+        
     public static byte[] concatenateArray(byte[] a,byte[] b) {
         byte[] c = new byte[a.length+b.length];
         System.arraycopy(a, 0, c, 0, a.length);
         System.arraycopy(b, 0, c, a.length, b.length);      
         return c;
     }
-    
-    
+        
     // segurança
     public static byte[] sign(byte[]dados, PrivateKey chave) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
-        Signature sign = Signature.getInstance("SHA256withRSA");
-        sign.initSign(chave);
-        sign.update(dados);
-        return sign.sign();
+        Signature signature = Signature.getInstance("SHA256withRSA");
+        signature.initSign(chave);
+        signature.update(dados);
+        return signature.sign();
     }
     
     public static boolean verifiySignature(byte[]dados,byte[] signature, PublicKey key) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
